@@ -1,0 +1,11 @@
+title: Shrimp World
+description: A blog about my 5 gallon no filter planted tank. 
+author: Heming
+baseurl: ""
+url: ""
+markdown: kramdown 
+excerpt_separator: "<!--more-->"
+plugins:
+  - jekyll-paginate
+paginate: 7
+paginate_path: "/page:num/"
