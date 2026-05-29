@@ -1,1 +1,16 @@
-{}
+{
+  "IMG_0211.JPG": {
+    "type": "image",
+    "output": "2026-04-28-day7-??",
+    "tank_day": 7,
+    "capture_date": "2026-04-28T22:11:20",
+    "date_interpolated": true
+  },
+  "IMG_0226.JPG": {
+    "type": "image",
+    "output": "2026-04-28-day7-??",
+    "tank_day": 7,
+    "capture_date": "2026-04-29T02:38:56",
+    "date_interpolated": true
+  }
+}

@@ -254,31 +254,34 @@ def interpolate_datetime(path: Path, date_index: dict[int, datetime]) -> Optiona
 # Naming
 # ---------------------------------------------------------------------------
 
-def next_index(base: str, output_dir: Path, ext: str) -> int:
-    """Return the next available 1-based index for base-NN*.ext in output_dir."""
-    # Match both plain (base-01.webp) and flagged (base-01~.webp)
+def next_index(base: str, output_dir: Path, ext: str, video: bool = False) -> int:
+    """Return the next available 1-based index for base-NN*.ext in output_dir.
+    Videos use a 'v' prefix on the index: base-v01.mp4"""
     existing = list(output_dir.glob(f"{base}-*.{ext}"))
     numbers = []
     for f in existing:
-        # Strip trailing ~ before parsing the number
         stem = f.stem.rstrip("~")
+        part = stem.split("-")[-1].lstrip("v")
         try:
-            numbers.append(int(stem.split("-")[-1]))
+            numbers.append(int(part))
         except ValueError:
             pass
     return max(numbers, default=0) + 1
 
 
-def make_stem(dt: datetime, out_dir: Path, ext: str, flagged: bool = False) -> str:
+def make_stem(dt: datetime, out_dir: Path, ext: str,
+              flagged: bool = False, video: bool = False) -> str:
     """
     Build the full output stem: YYYY-MM-DD-dayN-NN
+    Videos get a v prefix on the index: YYYY-MM-DD-dayN-vNN
     Appends ~ if flagged (date was interpolated).
     """
     day  = shrimp_date(dt)
     tday = tank_day(dt)
     base = f"{day.strftime('%Y-%m-%d')}-day{tday}"
-    idx  = next_index(base, out_dir, ext)
-    stem = f"{base}-{idx:02d}"
+    idx  = next_index(base, out_dir, ext, video=video)
+    index_str = f"v{idx:02d}" if video else f"{idx:02d}"
+    stem = f"{base}-{index_str}"
     if flagged:
         stem += "~"
     return stem
@@ -311,6 +314,40 @@ def save_webp(img: Image.Image, dest: Path, quality: int):
 # ---------------------------------------------------------------------------
 # Processors
 # ---------------------------------------------------------------------------
+
+def extract_video_thumbnail(video_path: Path, thumb_path: Path, med_path: Path):
+    """Extract first frame from video and save as WebP thumbnail and med."""
+    import tempfile
+    with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as tmp:
+        tmp_path = Path(tmp.name)
+
+    try:
+        subprocess.run([
+            "ffmpeg", "-v", "quiet", "-y",
+            "-i", str(video_path),
+            "-vframes", "1",
+            "-vf", "scale=trunc(iw/2)*2:trunc(ih/2)*2",
+            str(tmp_path)
+        ], check=True, capture_output=True)
+
+        img = Image.open(tmp_path)
+
+        if img.width > MAX_WIDTH:
+            ratio = MAX_WIDTH / img.width
+            img_med = img.resize((MAX_WIDTH, int(img.height * ratio)), Image.LANCZOS)
+        else:
+            img_med = img.copy()
+        save_webp(img_med, med_path, WEBP_QUALITY)
+
+        if img.width > THUMB_WIDTH:
+            ratio = THUMB_WIDTH / img.width
+            img_thumb = img.resize((THUMB_WIDTH, int(img.height * ratio)), Image.LANCZOS)
+        else:
+            img_thumb = img.copy()
+        save_webp(img_thumb, thumb_path, THUMB_QUALITY)
+
+    finally:
+        tmp_path.unlink(missing_ok=True)
 
 def process_image(path: Path, paths: dict, metadata: dict,
                   flagged: dict, date_index: dict, dry_run: bool):
@@ -387,7 +424,7 @@ def process_video(path: Path, paths: dict, metadata: dict,
     else:
         print(f"  🎬 {path.name}  [day {tank_day(dt)}]")
 
-    stem     = make_stem(dt, paths["video"], "mp4", flagged=is_flagged)
+    stem     = make_stem(dt, paths["video"], "mp4", flagged=is_flagged, video=True)
     out_path = paths["video"] / f"{stem}.mp4"
 
     print(f"     → {stem}")
@@ -424,6 +461,15 @@ def process_video(path: Path, paths: dict, metadata: dict,
     metadata[path.name] = record
     if is_flagged:
         flagged[path.name] = record
+
+    # Extract thumbnail from the processed video
+    thumb_path = paths["thumb"] / f"{stem}.webp"
+    med_path   = paths["med"]   / f"{stem}.webp"
+    try:
+        extract_video_thumbnail(out_path, thumb_path, med_path)
+        print(f"     ✓ thumbnail extracted")
+    except Exception as e:
+        print(f"     ⚠ thumbnail extraction failed: {e}")
 
     shutil.move(str(path), paths["processed"] / path.name)
     print(f"     ✓ saved + moved to processed/")

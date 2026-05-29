@@ -1,6 +1,21 @@
 ---
 layout: default
 ---
+{% assign post_index = 0 %}
+{% for p in site.posts %}
+  {% if p.url == page.url %}
+    {% assign post_index = forloop.index0 %}
+  {% endif %}
+{% endfor %}
+{% assign paginate_size = site.paginate | default: 7 %}
+{% assign back_page = post_index | divided_by: paginate_size | plus: 1 %}
+{% if back_page == 1 %}
+  {% assign back_url = '/' %}
+{% else %}
+  {% assign back_url = '/page' | append: back_page | append: '/' %}
+{% endif %}
+<a href="{{ back_url | relative_url }}" class="back-btn">← Back</a>
+
 <article>
   <h1>{{ page.title }}</h1>
   <p class="meta">{{ page.date | date: "%B %d, %Y" }}</p>
