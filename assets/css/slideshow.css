@@ -1,0 +1,240 @@
+/* =====================================================
+   Slideshow — clean minimal styles
+   All colours and sizes use CSS variables so a future
+   visual update only needs to touch :root
+   ===================================================== */
+
+:root {
+  --slide-bg:          #fff;
+  --slide-border:      #e8e8e8;
+  --slide-radius:      6px;
+  --slide-shadow:      0 2px 12px rgba(0,0,0,0.07);
+
+  --arrow-bg:          rgba(255,255,255,0.9);
+  --arrow-hover-bg:    #fff;
+  --arrow-color:       #333;
+  --arrow-border:      #ddd;
+  --arrow-size:        40px;
+
+  --thumb-size:        72px;
+  --thumb-gap:         8px;
+  --thumb-active-ring: 2px solid #333;
+  --thumb-radius:      4px;
+
+  --annotation-color:  #555;
+  --annotation-size:   0.9rem;
+  --annotation-min-h:  1.4em;
+
+  --counter-color:     #999;
+  --counter-size:      0.8rem;
+
+  --uncertain-color:   #b07d00;
+}
+
+/* ── Outer container ─────────────────────────────── */
+.slideshow {
+  margin: 2rem 0;
+  user-select: none;
+}
+
+/* ── Stage (main image + arrows) ─────────────────── */
+.slideshow-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--slide-bg);
+  border: 1px solid var(--slide-border);
+  border-radius: var(--slide-radius);
+  box-shadow: var(--slide-shadow);
+  overflow: hidden;
+}
+
+.slideshow-slides {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
+.slideshow-slide {
+  display: none;
+}
+
+.slideshow-slide.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slideshow-media {
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 0;
+}
+
+video.slideshow-media {
+  background: #000;
+}
+
+/* ── Arrows ──────────────────────────────────────── */
+.slideshow-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--arrow-bg);
+  border: 1px solid var(--arrow-border);
+  border-radius: 50%;
+  color: var(--arrow-color);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+  opacity: 0.7;
+  padding: 0;
+  line-height: 1;
+}
+
+.slideshow-arrow:hover {
+  background: var(--arrow-hover-bg);
+  opacity: 1;
+}
+
+.slideshow-arrow.prev { left: 10px; }
+.slideshow-arrow.next { right: 10px; }
+
+.slideshow-arrow:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+/* ── Annotation ──────────────────────────────────── */
+.slideshow-annotation {
+  min-height: var(--annotation-min-h);
+  padding: 0.6rem 0 0.2rem;
+  position: relative;
+}
+
+.annotation-text {
+  display: none;
+  margin: 0;
+  color: var(--annotation-color);
+  font-size: var(--annotation-size);
+  line-height: 1.5;
+}
+
+.annotation-text.active {
+  display: block;
+}
+
+.date-uncertain {
+  margin-left: 0.5em;
+  font-size: 0.8em;
+  color: var(--uncertain-color);
+  font-style: italic;
+}
+
+/* ── Thumbnail strip ─────────────────────────────── */
+.slideshow-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--thumb-gap);
+  padding: 0.5rem 0;
+}
+
+.slideshow-thumb {
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  flex-shrink: 0;
+  border-radius: var(--thumb-radius);
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.15s;
+  border: 2px solid transparent;
+}
+
+.slideshow-thumb:hover {
+  opacity: 0.85;
+}
+
+.slideshow-thumb.active {
+  opacity: 1;
+  border: var(--thumb-active-ring);
+}
+
+.slideshow-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Main image is a link to open full size in new tab */
+.slide-enlarge {
+  display: block;
+  width: 100%;
+  cursor: zoom-in;
+}
+
+/* Video thumb */
+.thumb-video-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.thumb-play-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+
+/* ── Counter ─────────────────────────────────────── */
+.slideshow-counter {
+  margin: 0.25rem 0 0;
+  font-size: var(--counter-size);
+  color: var(--counter-color);
+  text-align: right;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 600px) {
+  :root {
+    --thumb-size: 56px;
+    --arrow-size: 34px;
+  }
+
+  .slideshow-media {
+    max-height: 55vw;
+  }
+}
+
+/* ── Single photo (no slideshow chrome) ─────────── */
+.single-photo {
+  margin: 2rem 0;
+}
+
+.single-photo .slideshow-media {
+  width: 100%;
+  border: 1px solid var(--slide-border);
+  border-radius: var(--slide-radius);
+  box-shadow: var(--slide-shadow);
+}
+
+.single-photo .annotation-text {
+  display: block;
+  padding: 0.6rem 0 0.2rem;
+}

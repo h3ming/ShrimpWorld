@@ -163,6 +163,35 @@ h1 {
   background: #ddd;
 }
 
+.card-thumbs {
+  display: flex;
+  flex-wrap: nowrap;        /* single row */
+  gap: 6px;
+  margin: 0.75rem 0;
+  overflow: hidden;         /* clips thumbnails that don't fit */
+}
+
+.card-thumb-link {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.card-thumb-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.15s;
+}
+
+.card-thumb-link:hover img {
+  opacity: 0.85;
+}
+/* ======pagination====== */
 
 .pagination {
   display: flex;

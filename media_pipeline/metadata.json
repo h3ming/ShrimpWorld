@@ -1,0 +1,177 @@
+{
+  "IMG_0518.mov": {
+    "type": "video",
+    "output": "2026-05-21-day30-01",
+    "tank_day": 30,
+    "capture_date": "2026-05-21T23:33:31",
+    "date_interpolated": false
+  },
+  "IMG_0530.JPG": {
+    "type": "image",
+    "output": "2026-05-22-day31-01",
+    "tank_day": 31,
+    "capture_date": "2026-05-22T20:05:45",
+    "date_interpolated": false
+  },
+  "IMG_0543.JPG": {
+    "type": "image",
+    "output": "2026-05-23-day32-01",
+    "tank_day": 32,
+    "capture_date": "2026-05-24T00:24:56",
+    "date_interpolated": false
+  },
+  "IMG_0547.mov": {
+    "type": "video",
+    "output": "2026-05-24-day33-01",
+    "tank_day": 33,
+    "capture_date": "2026-05-24T19:12:57",
+    "date_interpolated": false
+  },
+  "IMG_0558.JPG": {
+    "type": "image",
+    "output": "2026-05-25-day34-01",
+    "tank_day": 34,
+    "capture_date": "2026-05-25T18:36:46",
+    "date_interpolated": false
+  },
+  "IMG_0559.MOV": {
+    "type": "video",
+    "output": "2026-05-25-day34-01",
+    "tank_day": 34,
+    "capture_date": "2026-05-25T22:41:50",
+    "date_interpolated": false
+  },
+  "IMG_0561.MOV": {
+    "type": "video",
+    "output": "2026-05-25-day34-02",
+    "tank_day": 34,
+    "capture_date": "2026-05-25T22:49:47",
+    "date_interpolated": false
+  },
+  "IMG_0564.JPG": {
+    "type": "image",
+    "output": "2026-05-25-day34-02",
+    "tank_day": 34,
+    "capture_date": "2026-05-25T22:54:10",
+    "date_interpolated": false
+  },
+  "IMG_0565.MOV": {
+    "type": "video",
+    "output": "2026-05-25-day34-03",
+    "tank_day": 34,
+    "capture_date": "2026-05-25T23:09:34",
+    "date_interpolated": false
+  },
+  "IMG_0566.MOV": {
+    "type": "video",
+    "output": "2026-05-25-day34-04",
+    "tank_day": 34,
+    "capture_date": "2026-05-25T23:17:01",
+    "date_interpolated": false
+  },
+  "IMG_0567.JPG": {
+    "type": "image",
+    "output": "2026-05-25-day34-03",
+    "tank_day": 34,
+    "capture_date": "2026-05-25T23:23:48",
+    "date_interpolated": false
+  },
+  "IMG_0568.JPG": {
+    "type": "image",
+    "output": "2026-05-25-day34-04",
+    "tank_day": 34,
+    "capture_date": "2026-05-25T23:24:10",
+    "date_interpolated": false
+  },
+  "IMG_0586.JPG": {
+    "type": "image",
+    "output": "2026-05-26-day35-01",
+    "tank_day": 35,
+    "capture_date": "2026-05-26T21:43:06",
+    "date_interpolated": false
+  },
+  "IMG_0587.mov": {
+    "type": "video",
+    "output": "2026-05-26-day35-01",
+    "tank_day": 35,
+    "capture_date": "2026-05-26T21:49:00",
+    "date_interpolated": false
+  },
+  "IMG_0588.mov": {
+    "type": "video",
+    "output": "2026-05-26-day35-02",
+    "tank_day": 35,
+    "capture_date": "2026-05-26T21:49:10",
+    "date_interpolated": false
+  },
+  "IMG_0589.jpg": {
+    "type": "image",
+    "output": "2026-05-26-day35-02",
+    "tank_day": 35,
+    "capture_date": "2026-05-26T23:30:45",
+    "date_interpolated": false
+  },
+  "IMG_0590.JPG": {
+    "type": "image",
+    "output": "2026-05-26-day35-03",
+    "tank_day": 35,
+    "capture_date": "2026-05-26T23:30:54",
+    "date_interpolated": false
+  },
+  "IMG_0591.JPG": {
+    "type": "image",
+    "output": "2026-05-26-day35-04",
+    "tank_day": 35,
+    "capture_date": "2026-05-26T23:31:02",
+    "date_interpolated": false
+  },
+  "IMG_0597.MOV": {
+    "type": "video",
+    "output": "2026-05-27-day36-01",
+    "tank_day": 36,
+    "capture_date": "2026-05-28T00:20:46",
+    "date_interpolated": false
+  },
+  "IMG_0599.MOV": {
+    "type": "video",
+    "output": "2026-05-27-day36-02",
+    "tank_day": 36,
+    "capture_date": "2026-05-28T00:28:35",
+    "date_interpolated": false
+  },
+  "IMG_0600.JPG": {
+    "type": "image",
+    "output": "2026-05-27-day36-01",
+    "tank_day": 36,
+    "capture_date": "2026-05-28T00:29:35",
+    "date_interpolated": false
+  },
+  "IMG_0601.JPG": {
+    "type": "image",
+    "output": "2026-05-27-day36-02",
+    "tank_day": 36,
+    "capture_date": "2026-05-28T00:40:36",
+    "date_interpolated": false
+  },
+  "IMG_0602.JPG": {
+    "type": "image",
+    "output": "2026-05-27-day36-03",
+    "tank_day": 36,
+    "capture_date": "2026-05-28T01:35:24",
+    "date_interpolated": false
+  },
+  "IMG_5680.HEIC": {
+    "type": "image",
+    "output": "2026-05-28-day37-01",
+    "tank_day": 37,
+    "capture_date": "2026-05-29T00:15:12",
+    "date_interpolated": false
+  },
+  "IMG_5683.MOV": {
+    "type": "video",
+    "output": "2026-05-28-day37-02",
+    "tank_day": 37,
+    "capture_date": "2026-05-29T00:16:18",
+    "date_interpolated": false
+  }
+}

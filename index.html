@@ -2,75 +2,72 @@
 layout: default
 title: Home
 ---
-
 <h1>Shrimp Tank Log</h1>
-
 <div class="post-list" id="post-list">
     {% for post in paginator.posts %}
-    <div class="post-card" data-date="{{ post.date | date: '%s' }}">
-
-      <h2>   
-        <a href="{{ post.url }}">{{ post.title }}</a>
-    </h2>
-
-      <p class="post-date">
+<div class="post-card" data-date="{{ post.date | date: '%s' }}">
+<h2>
+<a href="{{ post.url }}">{{ post.title }}</a>
+</h2>
+<p class="post-date">
         {{ post.date | date: "%B %d, %Y" }}
-      </p>
-
+</p>
       {% assign word_count = post.content | strip_html | number_of_words %}
-
-      <p class="post-preview">
+<p class="post-preview">
         {{ post.excerpt | strip_html | truncatewords: 30 }}
-      </p>
-
-      {% if word_count > 30 %}
-
-        <div class="post-full hidden">
-          {{ post.content }}
-        </div>
+</p>
+      {% if post.galleries %}
+<div class="card-thumbs">
+        {% for gallery_name in post.galleries %}
+          {% assign gallery = post[gallery_name] %}
+          {% for item in gallery %}
+<a href="{{ post.url }}" class="card-thumb-link">
+  <img
+    src="{{ '/assets/images/photos/thumb/' | append: item.stem | append: '.webp' | relative_url }}"
+    alt="{{ post.title }}"
+    loading="lazy"
+  >
+</a>
+          {% endfor %}
+        {% endfor %}
+</div>
       {% endif %}
-
-      <div class="post-footer">
-
+      {% if word_count > 30 %}
+<div class="post-full hidden">
+          {{ post.content }}
+</div>
+      {% endif %}
+<div class="post-footer">
         {% if word_count > 30 %}
-          <button class="toggle-btn">Read more</button>
+<button class="toggle-btn">Read more</button>
         {% endif %}
-
         {% if post.tags %}
-          <div class="tags">
+<div class="tags">
             {% for tag in post.tags %}
-              <a href="/tags/#{{ tag | slugify }}" class="tag">
+<a href="/tags/#{{ tag | slugify }}" class="tag">
                 {{ tag }}
-              </a>
+</a>
             {% endfor %}
-          </div>
+</div>
         {% endif %}
-
-      </div>
-
-
-    </div>
+</div>
+</div>
   {% endfor %}
 </div>
-
 <!-- pagination controls -->
 <div class="pagination">
   {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path }}">←</a>
+<a href="{{ paginator.previous_page_path }}">←</a>
   {% endif %}
-
-  <span>Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
-
+<span>Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
   {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path }}">→</a>
+<a href="{{ paginator.next_page_path }}">→</a>
   {% endif %}
 </div>
-
 <div class="nav-buttons">
-  <a href="/" class="btn">Newest</a>
-  <a href="/page{{ paginator.total_pages }}/" class="btn">Oldest</a>
+<a href="/" class="btn">Newest</a>
+<a href="/page{{ paginator.total_pages }}/" class="btn">Oldest</a>
 </div>
-
 <script src="/assets/js/toggle.js"></script>
 <!-- <script src="/assets/js/tank-scroll.js"></script> -->
 <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>

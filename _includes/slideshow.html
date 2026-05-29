@@ -1,0 +1,122 @@
+{% assign photos = include.photos %}
+{% if photos %}
+
+{% if photos.size == 1 %}
+{% assign item = photos[0] %}
+<div class="single-photo">
+  {% if item.type == "video" %}
+  <video
+    class="slideshow-media"
+    src="{{ '/assets/images/photos/video/' | append: item.stem | append: '.mp4' | relative_url }}"
+    poster="{{ '/assets/images/photos/thumb/' | append: item.stem | append: '.webp' | relative_url }}"
+    controls
+    preload="none"
+  ></video>
+  {% else %}
+  <a
+    href="{{ '/assets/images/photos/med/' | append: item.stem | append: '.webp' | relative_url }}"
+    target="_blank"
+    rel="noopener"
+    class="slide-enlarge"
+  >
+    <img
+      class="slideshow-media"
+      src="{{ '/assets/images/photos/med/' | append: item.stem | append: '.webp' | relative_url }}"
+      alt="{% if item.note %}{{ item.note }}{% else %}photo{% endif %}"
+      loading="lazy"
+    >
+  </a>
+  {% endif %}
+  {% if item.note %}
+  <p class="annotation-text active">
+    {{ item.note }}
+    {% assign flagged = item.stem | slice: -1, 1 %}
+    {% if flagged == '~' %}<span class="date-uncertain" title="Date was estimated — may be inaccurate">⚠ date uncertain</span>{% endif %}
+  </p>
+  {% endif %}
+</div>
+
+{% else %}
+
+<div class="slideshow" data-total="{{ photos.size }}">
+
+  <!-- Main viewer -->
+  <div class="slideshow-stage">
+    <button class="slideshow-arrow prev" aria-label="Previous">&#8592;</button>
+
+    <div class="slideshow-slides">
+      {% for item in photos %}
+      <div class="slideshow-slide{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}">
+
+        {% if item.type == "video" %}
+        <video
+          class="slideshow-media"
+          src="{{ '/assets/images/photos/video/' | append: item.stem | append: '.mp4' | relative_url }}"
+          poster="{{ '/assets/images/photos/thumb/' | append: item.stem | append: '.webp' | relative_url }}"
+          controls
+          preload="none"
+        ></video>
+        {% else %}
+        <a
+          href="{{ '/assets/images/photos/med/' | append: item.stem | append: '.webp' | relative_url }}"
+          target="_blank"
+          rel="noopener"
+          class="slide-enlarge"
+        >
+          <img
+            class="slideshow-media"
+            src="{{ '/assets/images/photos/med/' | append: item.stem | append: '.webp' | relative_url }}"
+            alt="{% if item.note %}{{ item.note }}{% else %}slide{% endif %}"
+            loading="lazy"
+          >
+        </a>
+        {% endif %}
+
+      </div>
+      {% endfor %}
+    </div>
+
+    <button class="slideshow-arrow next" aria-label="Next">&#8594;</button>
+  </div>
+
+  <!-- Annotation -->
+  <div class="slideshow-annotation">
+    {% for item in photos %}
+    <p class="annotation-text{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}">
+      {% if item.note %}{{ item.note }}{% endif %}
+      {% assign flagged = item.stem | slice: -1, 1 %}
+      {% if flagged == '~' %}<span class="date-uncertain" title="Date was estimated — may be inaccurate">⚠ date uncertain</span>{% endif %}
+    </p>
+    {% endfor %}
+  </div>
+
+  <!-- Thumbnail strip -->
+  <div class="slideshow-thumbs">
+    {% for item in photos %}
+    <div class="slideshow-thumb{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}">
+      {% if item.type == "video" %}
+      <div class="thumb-video-wrap">
+        <img
+          src="{{ '/assets/images/photos/thumb/' | append: item.stem | append: '.webp' | relative_url }}"
+          alt="video thumbnail"
+        >
+        <span class="thumb-play-icon">▶</span>
+      </div>
+      {% else %}
+      <img
+        src="{{ '/assets/images/photos/thumb/' | append: item.stem | append: '.webp' | relative_url }}"
+        alt="{% if item.note %}{{ item.note }}{% else %}slide{% endif %}"
+      >
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Slide counter -->
+  <p class="slideshow-counter">
+    <span class="current-slide">1</span> / {{ photos.size }}
+  </p>
+
+</div>
+{% endif %}
+{% endif %}
