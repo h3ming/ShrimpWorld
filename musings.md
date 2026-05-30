@@ -9,6 +9,10 @@ Keeping a tank does kind of make me feel like a mini-god, as creator of this mes
 
 ---
 
+There's something about how the interaction of so many dynamic systems resulted in the more self contained world as it is inside my tank. Though I wanted to go as natural as possible, and procured every living thing in the tank from local sellers in the Chicago area, they originally originated from all over the world. These plants and other organisms might never ineract with one another if it was truly in the wild. Crystal red shrimp are also a very inbred species bred for their unique coloration and appeal to hobbyists. 
+
+---
+
 Not everyone is as excited as I am about the things that happen in my tank. I've learned to try different angles to elicit interest. My partner used to only look at the tank a few seconds at a time, but ever since I told her about snail falls (sometimes snails let go and drop down from the surface of the water, it's very beautiful and graceful), she's been spending more time viewing it. However, this shared knowledge also unlocked the earthquake interaction for the tank, where she stands infront of the tank and shifts her body weight to shake the floor in hopes of eliciting the fall of unsuspecting snails.  
 
 --- 
