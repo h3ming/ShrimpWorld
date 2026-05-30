@@ -1,8 +1,8 @@
 title: Shrimp World
 description: A blog about my 5 gallon no filter planted tank. 
 author: Heming
-baseurl: ""
-url: ""
+url: "https://h3ming.github.io"
+baseurl: "/ShrimpWorld"
 markdown: kramdown 
 excerpt_separator: "<!--more-->"
 plugins:
