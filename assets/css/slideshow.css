@@ -232,9 +232,9 @@ video.slideshow-media {
 
 .single-photo .slideshow-media {
   width: 100%;
-  border: 1px solid var(--slide-border);
+  /* border: 1px solid var(--slide-border);
   border-radius: var(--slide-radius);
-  box-shadow: var(--slide-shadow);
+  box-shadow: var(--slide-shadow); */
 }
 
 .single-photo .annotation-text {
