@@ -232,6 +232,8 @@ video.slideshow-media {
 
 .single-photo .slideshow-media {
   width: 100%;
+  box-shadow: none;
+  border: none;
   /* border: 1px solid var(--slide-border);
   border-radius: var(--slide-radius);
   box-shadow: var(--slide-shadow); */
