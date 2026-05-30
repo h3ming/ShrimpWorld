@@ -7,7 +7,7 @@ title: Home
     {% for post in paginator.posts %}
 <div class="post-card" data-date="{{ post.date | date: '%s' }}">
 <h2>
-<a href="{{ post.url }}">{{ post.title }}</a>
+<a href="{{ post.url | relative_url }}">{{ post.title }}</a>
 </h2>
 <p class="post-date">
         {{ post.date | date: "%B %d, %Y" }}
@@ -21,7 +21,7 @@ title: Home
         {% for gallery_name in post.galleries %}
           {% assign gallery = post[gallery_name] %}
           {% for item in gallery %}
-<a href="{{ post.url }}" class="card-thumb-link">
+<a href="{{ post.url | relative_url }}" class="card-thumb-link">
   <img
     src="{{ '/assets/images/photos/thumb/' | append: item.stem | append: '.webp' | relative_url }}"
     alt="{{ post.title }}"
@@ -42,7 +42,7 @@ title: Home
 <div class="post-footer">
         {% if word_count > 30 %}
           {% if post.galleries %}
-<a href="{{ post.url }}" class="toggle-btn">Read more</a>
+<a href="{{ post.url | relative_url }}" class="toggle-btn">Read more</a>
           {% else %}
 <button class="toggle-btn">Read more</button>
           {% endif %}
@@ -63,18 +63,18 @@ title: Home
 <!-- pagination controls -->
 <div class="pagination">
   {% if paginator.previous_page %}
-<a href="{{ paginator.previous_page_path }}">←</a>
+<a href="{{ paginator.previous_page_path | relative_url }}">←</a>
   {% endif %}
 <span>Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
   {% if paginator.next_page %}
-<a href="{{ paginator.next_page_path }}">→</a>
+<a href="{{ paginator.next_page_path | relative_url }}">→</a>
   {% endif %}
 </div>
 <div class="nav-buttons">
-<a href="/" class="btn">Newest</a>
-<a href="/page{{ paginator.total_pages }}/" class="btn">Oldest</a>
+<a href="{{ '/' | relative_url }}" class="btn">Newest</a>
+<a href="{{ '/page' | append: paginator.total_pages | append: '/' | relative_url }}" class="btn">Oldest</a>
 </div>
-<script src="/assets/js/toggle.js"></script>
-<!-- <script src="/assets/js/tank-scroll.js"></script> -->
+<script src="{{ '/assets/js/toggle.js' | relative_url }}"></script>
+<!-- <script src="{{ '/assets/js/tank-scroll.js' | relative_url }}"></script> -->
 <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
-<script src="/assets/js/cursor.js"></script>
+<script src="{{ '/assets/js/cursor.js' | relative_url }}"></script>

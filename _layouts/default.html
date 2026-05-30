@@ -1,31 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>{{ page.title }} | {{ site.title }}</title>
-  <link rel="stylesheet" href="/assets/css/style.css">
+<meta charset="UTF-8">
+<title>{{ page.title }} | {{ site.title }}</title>
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
-
 <body>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/musings">Musings</a>
-    <a href="/gallery">Scenes from the Tank</a>
-  </nav>
-
-  <main>
+<nav>
+<a href="{{ '/' | relative_url }}">Home</a>
+<a href="{{ '/about' | relative_url }}">About</a>
+<a href="{{ '/musings' | relative_url }}">Musings</a>
+<a href="{{ '/gallery' | relative_url }}">Scenes from the Tank</a>
+</nav>
+<main>
     {{ content }}
-  </main>
+</main>
 </body>
-
 <div class="tank-background">
-  <div class="tank-layer substrate"></div>
-  <div class="tank-layer rock"></div>
-
-  <div class="tank-layer plants-left"></div>
-  <div class="tank-layer plants-right"></div>
-
-  <div class="tank-layer bubbles"></div>
+<div class="tank-layer substrate"></div>
+<div class="tank-layer rock"></div>
+<div class="tank-layer plants-left"></div>
+<div class="tank-layer plants-right"></div>
+<div class="tank-layer bubbles"></div>
 </div>
 </html>
