@@ -56,7 +56,7 @@ tags: [week5]
 
 # Example usage
 create_day_posts(
-    start_day=28,
-    num_posts=6,
+    start_day=34,
+    num_posts=3,
     start_date="2026-05-25"
 )

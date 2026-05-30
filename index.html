@@ -32,14 +32,20 @@ title: Home
         {% endfor %}
 </div>
       {% endif %}
-      {% if word_count > 30 %}
+      {% unless post.galleries %}
+        {% if word_count > 30 %}
 <div class="post-full hidden">
           {{ post.content }}
 </div>
-      {% endif %}
+        {% endif %}
+      {% endunless %}
 <div class="post-footer">
         {% if word_count > 30 %}
+          {% if post.galleries %}
+<a href="{{ post.url }}" class="toggle-btn">Read more</a>
+          {% else %}
 <button class="toggle-btn">Read more</button>
+          {% endif %}
         {% endif %}
         {% if post.tags %}
 <div class="tags">
