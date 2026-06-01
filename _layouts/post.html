@@ -24,6 +24,16 @@ layout: default
 
 </article>
 
+{% if page.tags %}
+<div class="tags">
+  {% for tag in page.tags %}
+  <a href="{{ '/tags/' | relative_url }}#{{ t | slugify }}" class="tag">
+    {{ tag }}
+  </a>
+  {% endfor %}
+</div>
+{% endif %}
+
 <div class="post-nav">
   {% if page.previous %}
   <a class="nav-arrow prev" href="{{ page.previous.url | relative_url }}">← Previous Entry</a>

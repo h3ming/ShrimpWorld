@@ -227,6 +227,19 @@ h1 {
   flex-wrap: wrap;
 }
 
+.tag {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e8f5ee;
+  color: #2a6f5b;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.tag:hover {
+  background: #d0eddc;
+}
+
 
 /* ======POST PAGE====== */
 .post-nav {

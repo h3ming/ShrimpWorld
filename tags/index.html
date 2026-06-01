@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Tags
+permalink: /tags/
 ---
 {% assign sorted_tags = site.tags | sort %}
 
@@ -46,7 +47,7 @@ title: Tags
         {% if post.tags %}
 <div class="tags">
             {% for t in post.tags %}
-<a href="{{ '/tags/#' | append: t | slugify | relative_url }}" class="tag">
+<a href="{{ '/tags/' | relative_url }}#{{ t | slugify }}" class="tag">
                 {{ t }}
 </a>
             {% endfor %}
