@@ -50,7 +50,7 @@ title: Home
         {% if post.tags %}
 <div class="tags">
             {% for tag in post.tags %}
-<a href="/tags/#{{ tag | slugify }}" class="tag">
+<a href="{{ '/tags/' | relative_url }}#{{ t | slugify }}" class="tag">
                 {{ tag }}
 </a>
             {% endfor %}
