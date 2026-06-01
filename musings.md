@@ -3,7 +3,7 @@ layout: default
 title: Things Keeping a Tank Has Evoked in My Brain
 ---
 
-### Some things Keeping a Tank Has Evoked in My Brain that Will Not Only Be Further Explored But Also and Have Better Formatting in the Future
+### Some things Keeping a Tank Has Evoked in My Brain that Will Not Only Be Further Explored But Also Have Better Formatting in the Future
 
 Keeping a tank does kind of make me feel like a mini-god, as creator of this mesocosm. It also makes me feel like I'm playing a game not disimilar to SimEarth, where the puzzle I'm solving is to achieve a close enough balance such that the tank's ecosystem continues with as little interaction from me as possible. A lot of the fun comes from watching what these organisms do and they interact with one another. I might tip the scales sometimes, or intervene to keep things from going too badly, but in general I want to see how nature takes its course. 
 
