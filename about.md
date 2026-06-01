@@ -7,4 +7,9 @@ This is the captain's log for my planted shrimp tank, with the tank beginning of
 
 This website was also serves as the final project for Professor Katherine Buse's Interactive Environements course, but I plan to maintain and make further updates to the site. 
 
-This site is coded with Jekyll. 
+This site is coded using Jekyll. 
+
+<figure class="inline-figure">
+  <img src="{{ '/assets/images/whiteboard.jpg' | relative_url }}" class="inline-img">
+  <figcaption>taken may 30 2026</figcaption>
+</figure>
